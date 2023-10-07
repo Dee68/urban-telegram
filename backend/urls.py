@@ -23,6 +23,11 @@ from account.api.views import (
     ProfileListView,
     ProfileUpdateView,
     )
+from wishlist.views import (
+    WishListApiView,
+    UserWishListItems,
+    remove_from_list
+    )
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -68,5 +73,14 @@ urlpatterns = [
         ProfileUpdateView.as_view(),
         name='profile-update'
         ),
+    path(
+        'api/wishlist/',
+        WishListApiView.as_view()
+        ),
+    path(
+        'api/user/<int:pk>/wishlist-items/',
+        UserWishListItems.as_view()
+        ),
+    path('api/remove-wishlist/', remove_from_list, name='remove-wishlist')
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

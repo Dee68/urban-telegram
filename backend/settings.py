@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'mptt',
     'product',
+    'wishlist',
     'djoser',
 ]
 
